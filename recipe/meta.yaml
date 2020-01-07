@@ -18,13 +18,15 @@ requirements:
     - {{ compiler('c') }}
   host:
     - numpy
+    - scipy
+    - h5py
     - pip
     - setuptools
-    - python
+    - python >3
   run:
     - h5py
     - numpy
-    - python
+    - python >3
     - setuptools
     - scipy
 

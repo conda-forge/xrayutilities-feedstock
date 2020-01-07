@@ -22,11 +22,11 @@ requirements:
     - h5py
     - pip
     - setuptools
-    - python >3
+    - python  # [py3k]
   run:
     - h5py
     - numpy
-    - python >3
+    - python  # [py3k]
     - setuptools
     - scipy
 

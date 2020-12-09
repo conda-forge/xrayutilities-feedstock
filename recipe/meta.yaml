@@ -19,14 +19,13 @@ requirements:
     - {{ compiler('c') }}
   host:
     - numpy
-    - scipy
-    - h5py
     - pip
     - setuptools
     - python
   run:
     - h5py
-    - numpy
+    - matplotlib-base
+    - {{ pin_compatible('numpy') }}
     - python
     - scipy
 

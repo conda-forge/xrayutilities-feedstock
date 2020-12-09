@@ -28,7 +28,6 @@ requirements:
     - h5py
     - numpy
     - python
-    - setuptools
     - scipy
 
 test:

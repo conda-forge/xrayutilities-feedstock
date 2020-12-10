@@ -1,34 +1,34 @@
 {% set name = "xrayutilities" %}
-{% set version = "1.6.0" %}
+{% set version = "1.7.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 06bf890461bd4493cd52bf687d142fde243ad370c2d5473fc3f1946a4930c9ca
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8a12e858c3bba3876b1fd979363b0ff5c21234958c200da5fb8982ae93a302dc
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv "
-  skip: True  # [py2k]
+  number: 0
+  script: '{{ PYTHON }} -m pip install . -vv '
+  skip: true  # [py2k]
 
 requirements:
   build:
     - {{ compiler('c') }}
   host:
     - numpy
-    - scipy
-    - h5py
     - pip
     - setuptools
     - python
+    - h5py
+    - scipy
   run:
     - h5py
-    - numpy
+    - matplotlib-base
+    - {{ pin_compatible('numpy') }}
     - python
-    - setuptools
     - scipy
 
 test:
@@ -41,13 +41,13 @@ test:
     - xrayutilities.simpack
 
 about:
-  home: "https://xrayutilities.sourceforge.io"
-  license: "GNU General Public v2 or later (GPLv2+)"
-  license_family: "GPL"
-  license_file: "LICENSE.txt"
-  summary: "package for x-ray diffraction data evaluation"
-  doc_url: "https://xrayutilities.sourceforge.io/"
-  dev_url: "https://github.com/dkriegner/xrayutilities"
+  home: https://xrayutilities.sourceforge.io
+  license: GNU General Public v2 or later (GPLv2+)
+  license_family: GPL
+  license_file: LICENSE.txt
+  summary: package for x-ray diffraction data evaluation
+  doc_url: https://xrayutilities.sourceforge.io/
+  dev_url: https://github.com/dkriegner/xrayutilities
 
 extra:
   recipe-maintainers:

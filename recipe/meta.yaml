@@ -22,6 +22,8 @@ requirements:
     - pip
     - setuptools
     - python
+    - h5py
+    - scipy
   run:
     - h5py
     - matplotlib-base

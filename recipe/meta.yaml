@@ -1,5 +1,5 @@
 {% set name = "xrayutilities" %}
-{% set version = "1.7.1" %}
+{% set version = "1.7.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a2c5e7672b6b3e6152e2928bfabe58f5c2c8801df0f851dd37fd32a68fd45dd9
+  sha256: 2a48d650d1087cabe8ff66cfe2b0f2448d9b35fa81bab566c52b1400962cb5e6
 
 build:
-  number: 1
+  number: 0
   script: '{{ PYTHON }} -m pip install . -vv '
   skip: true  # [py2k]
 

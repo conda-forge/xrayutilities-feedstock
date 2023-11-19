@@ -1,5 +1,5 @@
 {% set name = "xrayutilities" %}
-{% set version = "1.7.4" %}
+{% set version = "1.7.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b8a6bc741273eaf10daea6862e4c84123feffe349c1e40bb55af1e858059a683
+  sha256: f76f66632c0fbc76e67e2ec7a2697a91eee006dc187b8a8df55d9a5964b575d2
 
 build:
-  number: 2
+  number: 0
   script: '{{ PYTHON }} -m pip install . -vv '
   skip: true  # [py2k]
 
@@ -26,6 +26,7 @@ requirements:
     - scipy
   run:
     - h5py
+    - lmfit
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
     - python

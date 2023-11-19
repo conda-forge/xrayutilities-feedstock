@@ -26,6 +26,7 @@ requirements:
     - scipy
   run:
     - h5py
+    - lmfit
     - matplotlib-base
     - {{ pin_compatible('numpy') }}
     - python

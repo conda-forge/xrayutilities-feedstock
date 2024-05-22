@@ -10,7 +10,7 @@ source:
   sha256: 917c8fd9f8bbb46519692e6e9d25650190b61340faddba183c1aae50ce20fd1c
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . -vv '
   skip: true  # [py2k]
 
@@ -29,7 +29,6 @@ requirements:
     - h5py
     - lmfit
     - matplotlib-base
-    - {{ pin_compatible('numpy') }}
     - python
     - scipy
 

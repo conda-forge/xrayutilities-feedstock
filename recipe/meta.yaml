@@ -18,19 +18,21 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
+    - meson-python
   host:
-    - numpy
-    - pip
-    - setuptools
     - python
-    - h5py
+    - pip
+    - meson-python
+    - numpy
     - scipy
+    - h5py
   run:
+    - python
+    - {{ pin_compatible('numpy') }}
+    - scipy
     - h5py
     - lmfit
     - matplotlib-base
-    - python
-    - scipy
 
 test:
   imports:

@@ -13,7 +13,10 @@ build:
   number: 0
   script: |
     {{ PYTHON }} -m build --wheel --no-isolation .
-    {{ PYTHON }} -m pip install --no-deps --no-build-isolation -vv dist/*.whl
+    {{ PYTHON }} -c "import pathlib, subprocess, sys; \
+wheels = list(pathlib.Path('dist').glob('*.whl')); \
+assert len(wheels) == 1, f'Expected 1 wheel, found {len(wheels)}: {wheels}'; \
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--no-deps', '--no-build-isolation', '-vv', str(wheels[0])])"
   skip: true  # [py2k]
 
 requirements:
@@ -29,6 +32,7 @@ requirements:
     - pip
     - meson-python
     - python-build
+    - wheel
     - numpy
     - scipy
     - h5py
@@ -42,12 +46,12 @@ requirements:
 
 test:
   imports:
-    - xrayutilities
-    - xrayutilities.analysis
-    - xrayutilities.io
-    - xrayutilities.materials
-    - xrayutilities.math
-    - xrayutilities.simpack
+    - xrayutilities             # [build_platform == target_platform]
+    - xrayutilities.analysis    # [build_platform == target_platform]
+    - xrayutilities.io          # [build_platform == target_platform]
+    - xrayutilities.materials   # [build_platform == target_platform]
+    - xrayutilities.math        # [build_platform == target_platform]
+    - xrayutilities.simpack     # [build_platform == target_platform]
 
 about:
   home: https://xrayutilities.sourceforge.io

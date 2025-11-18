@@ -11,7 +11,9 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m build --wheel --no-isolation && {{ PYTHON }} -m installer dist/*.whl
+  script: |
+    {{ PYTHON }} -m build --wheel --no-isolation .
+    {{ PYTHON }} -m pip install --no-deps --no-build-isolation -vv dist/*.whl
   skip: true  # [py2k]
 
 requirements:

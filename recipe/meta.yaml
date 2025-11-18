@@ -22,11 +22,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - meson-python
-    - python-build
   host:
     - python
     - pip
     - meson-python
+    - python-build
     - numpy
     - scipy
     - h5py

@@ -13,7 +13,6 @@ build:
   number: 0
   script:
     - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                         # [build_platform != target_platform]
-    - echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt       # [build_platform != target_platform]
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
     - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"           # [unix]
     # Unix (Linux + macOS; including osx-arm64 cross builds)

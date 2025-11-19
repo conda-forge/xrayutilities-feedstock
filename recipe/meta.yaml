@@ -17,8 +17,7 @@ build:
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
     - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"           # [unix]
     # Unix (Linux + macOS; including osx-arm64 cross builds)
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation \
-        -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}                               # [unix]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}    # [unix]
     # Windows (no cross-compilation)
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation                     # [win]
   skip: true  # [py2k]

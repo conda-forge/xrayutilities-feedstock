@@ -12,13 +12,10 @@ source:
 build:
   number: 0
   script:
-    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                         # [build_platform != target_platform]
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
-    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"           # [unix]
-    # Unix (Linux + macOS; including osx-arm64 cross builds)
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}    # [unix]
-    # Windows (no cross-compilation)
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation                     # [win]
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"                                              # [build_platform != target_platform]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}   # [build_platform != target_platform]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation                                                        # [build_platform == target_platform]
   skip: true  # [py2k]
 
 requirements:

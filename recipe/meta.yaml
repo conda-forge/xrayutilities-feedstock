@@ -10,7 +10,7 @@ source:
   sha256: d5da6262fedd92401226796ffed82c7696f0dfb9468e1bc1dab8bc4e4bd80d7e
 
 build:
-  number: 0
+  number: 2
   script:
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
     - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"                                              # [build_platform != target_platform]

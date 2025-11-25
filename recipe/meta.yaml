@@ -45,12 +45,12 @@ requirements:
 
 test:
   imports:
-    - xrayutilities             # [build_platform == target_platform]
-    - xrayutilities.analysis    # [build_platform == target_platform]
-    - xrayutilities.io          # [build_platform == target_platform]
-    - xrayutilities.materials   # [build_platform == target_platform]
-    - xrayutilities.math        # [build_platform == target_platform]
-    - xrayutilities.simpack     # [build_platform == target_platform]
+    - xrayutilities
+    - xrayutilities.analysis
+    - xrayutilities.io
+    - xrayutilities.materials
+    - xrayutilities.math
+    - xrayutilities.simpack
 
 about:
   home: https://xrayutilities.sourceforge.io

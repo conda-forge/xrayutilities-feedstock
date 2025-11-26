@@ -10,12 +10,21 @@ source:
   sha256: d5da6262fedd92401226796ffed82c7696f0dfb9468e1bc1dab8bc4e4bd80d7e
 
 build:
-  number: 0
-  script: '{{ PYTHON }} -m pip install . -vv '
+  number: 2
+  script:
+    # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"                                              # [build_platform != target_platform]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}   # [build_platform != target_platform]
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation                                                        # [build_platform == target_platform]
   skip: true  # [py2k]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - scipy                                  # [build_platform != target_platform]
+    - h5py                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - meson-python

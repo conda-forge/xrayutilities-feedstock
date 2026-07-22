@@ -17,6 +17,8 @@ build:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}   # [build_platform != target_platform]
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation                                                        # [build_platform == target_platform]
   skip: true  # [py2k]
+  skip: true  # [aarch64]
+  skip: true  # [ppc64le]
 
 requirements:
   build:

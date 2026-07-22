@@ -1,5 +1,5 @@
 {% set name = "xrayutilities" %}
-{% set version = "1.7.12" %}
+{% set version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d5da6262fedd92401226796ffed82c7696f0dfb9468e1bc1dab8bc4e4bd80d7e
+  sha256: 4840d3d746ef7655317eb44d57ec4e99e9792c6ab2b87397ba276e6ea8a9dc18
 
 build:
-  number: 2
+  number: 0
   script:
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
     - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"                                              # [build_platform != target_platform]

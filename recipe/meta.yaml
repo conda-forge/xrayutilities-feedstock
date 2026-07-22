@@ -32,7 +32,7 @@ requirements:
     - python
     - pip
     - meson-python
-    - numpy >=2.1
+    - numpy
     - scipy
     - h5py
   run:

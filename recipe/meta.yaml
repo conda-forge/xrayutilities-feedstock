@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 4840d3d746ef7655317eb44d57ec4e99e9792c6ab2b87397ba276e6ea8a9dc18
 
 build:
-  number: 0
+  number: 1
   script:
     # meson-python already sets a buildtype; avoid duplicate --buildtype in MESON_ARGS
     - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"                                              # [build_platform != target_platform]
